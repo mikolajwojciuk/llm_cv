@@ -12,7 +12,7 @@ from langchain.vectorstores import FAISS
 from src.utils.constants import LLM, EMBEDDING_MODEL
 
 
-class InteractiveCV:
+class InteractiveCv:
     def __init__(self, llm_id: str = LLM, embedding_model_id: str = EMBEDDING_MODEL):
         self.tokenizer, self.model = get_tokenizer_and_model(model_id=llm_id)
         self.embedding_model = get_embedding_model(model_id=embedding_model_id)

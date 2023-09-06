@@ -1,4 +1,4 @@
-from constants import LLM
+from src.utils.constants import LLM
 import transformers
 
 
