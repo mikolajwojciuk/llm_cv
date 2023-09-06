@@ -5,7 +5,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 
 
 def get_embedding_model(model_id: str = EMBEDDING_MODEL):
-    device = "cuda" if torch.cuda.isavailable() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
 
     embedding_model = HuggingFaceEmbeddings(
         model_name=model_id, model_kwargs={"device": device}
