@@ -8,3 +8,5 @@ repos:
     rev: v1.2.3
     hooks:
     - id: flake8
+    # E501 - line length (black will handle most of the issues, and what it can't - should be ingored)
+      args: ["--ignore=E501"]
