@@ -1,0 +1,8 @@
+torch 
+transformers 
+langchain 
+sentence_transformers 
+faiss-gpu 
+accelerate 
+bitsandbytes 
+pypdf
