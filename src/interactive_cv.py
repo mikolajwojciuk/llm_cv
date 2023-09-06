@@ -22,13 +22,13 @@ class InteractiveCv:
         self.chat_history = []
 
     def add_csv_file(self, file_path: str):
-        self.documents.append(load_csv(file_path))
+        self.documents += load_csv(file_path)
 
     def add_pdf_file(self, file_path: str):
-        self.documents.append(load_pdf(file_path))
+        self.documents += load_pdf(file_path)
 
     def add_web_data(self, links: List[str]):
-        self.documents.append(load_web_data(links))
+        self.documents += load_web_data(links)
 
     def __call__(self, question: str):
         if not self.chain:
