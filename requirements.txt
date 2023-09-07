@@ -6,3 +6,4 @@ faiss-gpu
 accelerate 
 bitsandbytes 
 pypdf
+streamlit

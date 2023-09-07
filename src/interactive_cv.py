@@ -7,7 +7,8 @@ from langchain.schema.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.llms import HuggingFacePipeline
 from langchain.chains import ConversationalRetrievalChain
-import transformers
+from transformers import pipeline
+from transformers.pipelines import Pipeline
 from langchain.vectorstores import FAISS
 from src.utils.constants import LLM, EMBEDDING_MODEL
 
@@ -21,16 +22,16 @@ class InteractiveCv:
         self.documents = []
         self.chat_history = []
 
-    def add_csv_file(self, file_path: str):
+    def add_csv_file(self, file_path: str) -> None:
         self.documents += load_csv(file_path)
 
-    def add_pdf_file(self, file_path: str):
+    def add_pdf_file(self, file_path: str) -> None:
         self.documents += load_pdf(file_path)
 
-    def add_web_data(self, links: List[str]):
+    def add_web_data(self, links: List[str]) -> None:
         self.documents += load_web_data(links)
 
-    def __call__(self, question: str):
+    def __call__(self, question: str) -> str:
         if not self.chain:
             self.init_chain()
 
@@ -43,7 +44,7 @@ class InteractiveCv:
 
         return "Sorry, I do not know the answer."
 
-    def init_chain(self):
+    def init_chain(self) -> None:
         embeddings_retriever = FAISS.from_documents(
             self.documents, self.embedding_model
         ).as_retriever()
@@ -59,8 +60,8 @@ class InteractiveCv:
             max_tokens_limit=3500,
         )
 
-    def _get_text_generation_pipeline(self):
-        text_generation_pipeline = transformers.pipeline(
+    def _get_text_generation_pipeline(self) -> Pipeline:
+        text_generation_pipeline = pipeline(
             model=self.model,
             tokenizer=self.tokenizer,
             return_full_text=True,  # langchain expects the full text
