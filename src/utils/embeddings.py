@@ -1,5 +1,5 @@
 import torch
-from constants import EMBEDDING_MODEL
+from src.utils.constants import EMBEDDING_MODEL
 
 from langchain.embeddings import HuggingFaceEmbeddings
 
